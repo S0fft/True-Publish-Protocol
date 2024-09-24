@@ -6,6 +6,12 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///true-publish-protocol.db'
 db = SQLAlchemy(app)
 
 
+class Post(db.Model):
+    post_id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(300), nullable=False)
+    text = db.Column(db.Text, nullable=False)
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
