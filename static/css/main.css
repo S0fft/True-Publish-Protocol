@@ -1,4 +1,5 @@
 .header__img {
     height: 48px;
     width: 48px;
+    border-radius: 10px;
 }
