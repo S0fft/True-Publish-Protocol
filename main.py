@@ -13,8 +13,10 @@ class Post(db.Model):
 
 
 @app.route('/')
-def index():
-    return render_template('index.html')
+def posts():
+    posts = Post.query.all()
+
+    return render_template('posts.html', posts=posts)
 
 
 @app.route('/create', methods=['POST', 'GET'])
@@ -33,11 +35,6 @@ def create():
 
     else:
         return render_template('create.html')
-
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
 
 
 if __name__ == '__main__':
