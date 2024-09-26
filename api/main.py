@@ -58,8 +58,15 @@ class Article(Resource):
             'text': args['text'],
         }
         articles[article_id] = new_article
+        return {article_id: new_article}, 201
 
-        return {article_id: new_article}, 200
+    def delete(self, article_id=None):
+        if article_id is None or article_id not in articles:
+            return {'message': 'Article not found!'}, 404
+
+        del articles[article_id]
+
+        return {'message': f'Article №{article_id} has been removed'}, 204
 
 
 api.add_resource(Article, '/articles', endpoint='article_list')
