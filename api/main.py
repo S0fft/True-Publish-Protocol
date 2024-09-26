@@ -29,6 +29,21 @@ class Article(Resource):
 
         return articles, 200
 
+    def post(self):
+        args = request.get_json()
+
+        if not args or 'title' not in args or 'text' not in args:
+            return {"message": "Title and text are required"}, 400
+
+        new_id = f"article{len(articles) + 1}"
+        new_article = {
+            'title': args['title'],
+            'text': args['text'],
+        }
+        articles[new_id] = new_article
+
+        return {new_id: new_article}, 201
+
     def put(self, article_id=None):
         if article_id is None:
             return {"message": "Article ID is required"}, 400
