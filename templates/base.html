@@ -22,18 +22,20 @@
 </head>
 <body>
     <div class="page">
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-            <div class="col-md-3 mb-2 mb-md-0">
-            <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-                <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-                <img class="header__img" src="{{ url_for('static', filename='img/logo.png') }}" alt="">
-            </a>
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 mb-3 border-bottom">
+            <div class="col-md-3 mb-1 mb-md-0">
+                <a href="/" class="d-inline-flex align-items-center text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                    <img class="header__img me-2" src="{{ url_for('static', filename='img/logo.png') }}" alt="">
+                    <h5 class="mb-0">True-Publish-Protocol</h5>
+                </a>
             </div>
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="{{ url_for('index') }}" class="nav-link px-2">Home</a></li>
-            <li><a href="{{ url_for('about') }}" class="nav-link px-2">About</a></li>
-            <li><a href="{{ url_for('create') }}" class="nav-link px-2">Create Article</a></li>
+            <li><a href="{{ url_for('posts') }}" class="nav-link px-2">All Articles</a></li>
+            <li><a href="{{ url_for('create') }}" class="nav-link px-2">Create Articles</a></li>
             </ul>
 
             <div class="col-md-3 text-end">
@@ -46,13 +48,10 @@
         </div>
     </div>
 
-    <footer class="py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-          <li class="nav-item"><a href="{{ url_for('index') }}" class="nav-link px-2 text-body-secondary">Home</a></li>
-          <li class="nav-item"><a href="{{ url_for('about') }}" class="nav-link px-2 text-body-secondary">About</a></li>
-          <li class="nav-item"><a href="{{ url_for('create') }}" class="nav-link px-2 text-body-secondary">Create Article</a></li>
+    <footer class="py-1 my-1">
+        <ul class="nav justify-content-center border-bottom  mb-3">
         </ul>
-        <p class="text-center text-body-secondary">© 2024 Company, Inc</p>
+        <p class="text-center text-body-secondary">© 2024 True-Publish-Protocol</p>
     </footer>
 </body>
 </html>
