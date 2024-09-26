@@ -1,6 +1,7 @@
 .app_template
 notes
 notes.txt
+instance
 
 *.log
 *.pot
