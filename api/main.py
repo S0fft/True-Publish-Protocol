@@ -1,8 +1,12 @@
-from flask import Flask
-from flask_restful import Api, Resource
+from flask import Flask, request
+from flask_restful import Api, Resource, reqparse
 
 app = Flask('True-Publish-Protocol')
 api = Api(app)
+
+parser = reqparse.RequestParser()
+parser.add_argument('title', required=True)
+parser.add_argument('text', required=True)
 
 articles = {
     'article1': {
@@ -19,14 +23,33 @@ articles = {
 class Article(Resource):
     def get(self, article_id=None):
         if article_id:
-            return articles[article_id]
+            if article_id in articles:
+                return articles[article_id], 200
+            return {"message": "Article not found!"}, 404
 
-        return articles
+        return articles, 200
+
+    def put(self, article_id=None):
+        if article_id is None:
+            return {"message": "Article ID is required"}, 400
+
+        args = request.get_json()
+
+        if not args or 'title' not in args or 'text' not in args:
+            return {"message": "Title and text are required"}, 400
+
+        new_article = {
+            'title': args['title'],
+            'text': args['text'],
+        }
+        articles[article_id] = new_article
+
+        return {article_id: new_article}, 200
 
 
 api.add_resource(Article, '/articles', endpoint='article_list')
-api.add_resource(Article, '/articles/<article_id>', endpoint='article_detail')
+api.add_resource(Article, '/articles/<string:article_id>', endpoint='article_detail')
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
