@@ -31,7 +31,7 @@ def create():
             db.session.commit()
             return redirect('/')
         except:
-            return 'There was an error adding the article'
+            return 'There was an error adding the article!'
 
     else:
         return render_template('create.html')
