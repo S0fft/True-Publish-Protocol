@@ -5,14 +5,23 @@ Record Adding
 {% endblock title %}
 
 {% block content %}
-<h1> Record Adding </h1>
+<div class="container">
+    <h1 class="text-center mb-4">Create Articles</h1>
 
-<form method="post" class="form-control">
-    <input type="text" name="title" palceholder="Enter the title of the article" class="form-control">
-    <br>
-    <input type="text" name="text" palceholder="Enter the text of the article" class="form-control">
-    <br>
-    <button class="btn btn-success" type="submit">Create</button>
-</form>
+    <form method="post" class="mx-auto" style="max-width: 600px;">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title of the Article</label>
+            <input type="text" id="title" name="title" placeholder="Enter the title of the article" class="form-control">
+        </div>
 
+        <div class="mb-3">
+            <label for="text" class="form-label">Text of the Article</label>
+            <textarea id="text" name="text" placeholder="Enter the text of the article" class="form-control" rows="5"></textarea>
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-success btn-lg" type="submit">Create</button>
+        </div>
+    </form>
+</div>
 {% endblock content %}
