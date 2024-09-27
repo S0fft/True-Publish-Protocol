@@ -60,6 +60,21 @@ class Article(Resource):
         articles[article_id] = new_article
         return {article_id: new_article}, 201
 
+    def patch(self, article_id=None):
+        if article_id is None or article_id not in articles:
+            return {"message": "Article not found!"}, 404
+
+        args = request.get_json()
+        article = articles[article_id]
+
+        if 'title' in args:
+            article['title'] = args['title']
+
+        if 'text' in args:
+            article['text'] = args['text']
+
+        return {article_id: article}, 200
+
     def delete(self, article_id=None):
         if article_id is None or article_id not in articles:
             return {'message': 'Article not found!'}, 404
