@@ -100,8 +100,8 @@ class Article(Resource):
         return {'message': f'Article {article_id} has been removed'}, 204
 
 
-api.add_resource(Article, '/articles', endpoint='article_list')
-api.add_resource(Article, '/articles/<int:article_id>', endpoint='article_detail')
+api.add_resource(Article, '/articles/', endpoint='article_list')
+api.add_resource(Article, '/articles/<int:article_id>/', endpoint='article_detail')
 
 
 if __name__ == '__main__':
